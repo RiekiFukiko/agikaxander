@@ -1,0 +1,310 @@
+$primary-color: #ff4500;
+$secondary-color: #ff6347;
+$text-dark: #333;
+$text-light: #666;
+$text-muted: #999;
+$background-light: #f8f8f8;
+$background-gallery: #f0f0f0;
+
+
+@mixin gradient-bg($color1, $color2) {
+  background: linear-gradient(135deg, $color1 0%, $color2 100%);
+}
+
+@mixin button-hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba($primary-color, 0.4);
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth; 
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  @include gradient-bg(#f0f0f0, #e8e8e8);
+  min-height: 100vh;
+}
+
+
+header {
+  .navbar {
+    @include gradient-bg($primary-color, $secondary-color);
+    padding: 1rem 0;
+    
+    .navbar-brand {
+      color: white !important;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-transform: lowercase;
+      text-decoration: none;
+      
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+    
+    .navbar-toggler {
+      border-color: rgba(255, 255, 255, 0.3);
+      
+      .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      }
+    }
+    
+    .nav-link {
+      color: white !important;
+      font-weight: 500;
+      font-size: 1.1rem;
+      transition: opacity 0.3s ease;
+      
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+.hero-section {
+  padding: 2rem 0;
+  
+  .content-left {
+    h1 {
+      color: #2c5f5f;
+      font-family: "Pacifico", cursive;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+    
+    .subtitle {
+      color: $text-muted;
+      font-size: 1.125rem;
+    }
+    
+    .author {
+      color: $text-muted;
+    }
+  }
+  
+  .main-photo {
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+
+.packages-section {
+  background: $background-light;
+  
+  .packages-left {
+    h2 {
+      color: $text-dark;
+      font-weight: bold;
+      line-height: 1.1;
+    }
+    
+    .studio-logo {
+      h3 {
+        color: $text-dark;
+      }
+      
+      p {
+        color: $text-light;
+        letter-spacing: 1px;
+      }
+    }
+    
+    .packages-title {
+      color: $text-dark;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    .package {
+      padding: 1.25rem 0;
+      border-bottom: 2px solid #eee;
+      
+      &:last-child {
+        border-bottom: none;
+      }
+      
+      h4 {
+        color: $text-dark;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+      
+      .rate {
+        color: $primary-color;
+        font-weight: bold;
+      }
+      
+      .details {
+        color: $text-light;
+        line-height: 1.4;
+      }
+    }
+  }
+
+  .photo-grid {
+    background: $text-dark;
+    padding: 20px;
+    border-radius: 10px;
+    
+    .photo-strip-grid {
+      aspect-ratio: 2 / 3;
+      background: #666;
+      border-radius: 8px;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid #444;
+      min-height: 80px;
+      
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: repeating-linear-gradient(
+          0deg,
+          transparent 0px,
+          transparent 20px,
+          rgba(255, 255, 255, 0.1) 20px,
+          rgba(255, 255, 255, 0.1) 22px
+        );
+      }
+      
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+        width: 20px;
+        height: 20px;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 50%;
+        z-index: 2;
+      }
+    }
+  }
+}
+
+
+.gallery-section {
+  background: $background-gallery;
+  
+  .gallery-item {
+    .gallery-photo {
+      aspect-ratio: 1;
+      @include gradient-bg(#8b4b8c, #6b2f6b);
+      border-radius: 25px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+      border: 4px solid #444;
+      
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 1;
+      }
+    }
+    
+    .book-btn {
+      @include gradient-bg($primary-color, $secondary-color);
+      border: none;
+      border-radius: 25px;
+      font-weight: bold;
+      box-shadow: 0 8px 20px rgba($primary-color, 0.3);
+      transition: all 0.3s ease;
+      
+      &:hover {
+        @include button-hover;
+      }
+    }
+  }
+  
+  .about-us {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    
+    h3 {
+      color: $text-dark;
+      font-weight: bold;
+    }
+    
+    p {
+      color: $text-light;
+      line-height: 1.6;
+      
+      &.lead {
+        color: $text-dark;
+      }
+    }
+  }
+}
+
+
+footer {
+  @include gradient-bg($primary-color, $secondary-color);
+  color: white;
+  
+  .footer-right {
+    h3 {
+      font-weight: bold;
+      color: white;
+    }
+    
+    .social-links {
+      a {
+        color: white;
+        font-weight: bold;
+        transition: opacity 0.3s ease;
+        
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+  
+  .footer-bottom {
+    p {
+      font-weight: bold;
+      color: white;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    .content-left {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+  }
+  
+  .packages-section {
+    .packages-left h2 {
+      text-align: center;
+    }
+  }
+}
